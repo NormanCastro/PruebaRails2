@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<h1 style="text-align: center">Tareas</h1>
+<div class="container">
+  <div class="row">
+    <% @tasks.each do |task| %>
+      <div class="col-md-3">
+        <div class="card text-center" style="margin-top: 30px;">
+          <%= image_tag task.image, class: 'card-img-top' %>
+          <div class="card-body">
+            <h6 class="card-title"><%= task.title %></h6>
+            <%= link_to 'Ver Tarea', task_path(task), class: "btn btn-info" %> <br> <br>
+              <% if task.completed  %>
+               <%= link_to 'Descompletar', task_completed_path(task), class: "btn btn-danger", method: :post %>          
+               <% else %>
+                <%= link_to 'Completar', task_completed_path(task) , class: "btn btn-success", method: :post %>   
+            <% end %>            
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>  
